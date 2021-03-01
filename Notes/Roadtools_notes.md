@@ -70,7 +70,7 @@ A framework that consist of two main components:
 ### [Plugins](https://github.com/dirkjanm/ROADtools/wiki/Getting-started-with-ROADrecon#using-the-data)
 - policies
     - Parse conditional access policies and export those to a file called `caps.html`
-- bloodhound
+- [bloodhound](https://github.com/dirkjanm/BloodHound-AzureAD)
     - Export Azure AD data to a custom BloodHound version
     
     
