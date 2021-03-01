@@ -82,7 +82,7 @@ A framework that consist of two main components:
     - spoofs App ID to another application that is registered
         - can only have the same permissions as the application used
         - AzureAD PS module is an OAuth2 public client (no verification)
-            - Other applications can be used if the have the `user_immpersonation` permission enabled
+            - Other applications can be used if the have the `user_impersonation` permission enabled
                 - e.x: `Microsoft.MileIQ`, `SharePoint Online Client Extensibility`, `Microsoft Teams - Device Admin Agent`, `Microsoft Stream Mobile Native`, `SharePoint Online Client`, `Outlook Oline Add-in App`
     - OAuth2 password grant flow
         - A.K.A Resource Owner Password Credentials (ROPC) Grant
