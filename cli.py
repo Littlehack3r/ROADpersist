@@ -13,7 +13,7 @@ Author: Shannon McHale
 #!/usr/bin/env python3
 
 import argparse
-import sys
+import subprocess
 
 parser = argparse.ArgumentParser(description='ROADpersist automates small actions in AzureAD that create persistence')
 subparser = parser.add_subparsers(dest='command')
@@ -24,10 +24,10 @@ test = subparser.add_parser('test')
 # Try to take first DisplayName and make it the PrincipalName @ email we pull from database 
 # See if we can copy naming conventino of envuronment automatically  
 
-addUser.add_argument('--Password', type=str, required=True)
-addUser.add_argument('--DisplayName', type=str, required=True)
-addUser.add_argument('--PrincipalName', type=str, required=True)
-addUser.add_argument('--NickName', type=str, required=True)
+addUser.add_argument('--Password', '-p', type=str, required=True)
+addUser.add_argument('--DisplayName','-dn', type=str, required=True)
+addUser.add_argument('--PrincipalName', '-pn', type=str, required=True)
+addUser.add_argument('--NickName', '-nn', type=str, required=True)
 
 args = parser.parse_args() 
 
@@ -39,7 +39,11 @@ args = parser.parse_args()
 #    parser.error("--AddUser requires -Password -DisplayName -NickName -PrincipalName.")
 
 if args.command == 'addUser':
+    p = subprocess.Popen(['powershell.exe', './test.ps1 foo'])
+    p = subprocess.Popen(['powershell.exe', './adduser1.ps1 args.Password, args.DisplayName, args.NickName, args.PrincipalName'])
     print("Run Script with args:", args.Password, args.NickName)
+    
 
 elif args.command == 'test':
+    p = subprocess.Popen(['powershell.exe', './test.ps1 foo'])
     print("other option")
