@@ -1,14 +1,12 @@
 ﻿# author - Julie McGlensey
-# this script first creates a new self-signed certificate,
-# then adds the new certificate to an existing service principal
-
-$SPname = "changeMeToSPName"
+# this script adds a new certificate to an existing service principal
 
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
-  -Subject "CN=testCert" `
+  -Subject "CN=certificateNameGoesHere" `
   -KeySpec KeyExchange
+$keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
 
-Get-AzADApplication -DisplayName $SPname | New-AzADAppCredential `
+Get-AzADApplication -DisplayName servicePrincipalNameGoesHere | New-AzADAppCredential `
   -CertValue $keyValue `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
