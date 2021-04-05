@@ -6,7 +6,7 @@ $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
   -KeySpec KeyExchange
 $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
 
-Get-AzADApplication -DisplayName servicePrincipalNameGoesHere | New-AzADAppCredential `
+Get-AzADServicePrincipal -DisplayName servicePrincipalNameGoesHere | New-AzADSpCredential `
   -CertValue $keyValue `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
