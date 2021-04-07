@@ -1,0 +1,19 @@
+// currently only works with developer.microsoft.com/en-us/graph/graph-explorer
+// comments aren't allowed in json so just delete this before using
+
+// prinipalId = user id
+// resourceId = service principal id
+// appRoleId = requested role to assign (can only use the roles that are directly added to the required subscription/resource group)
+
+// first used this get request to figure out the service prinicpal id (resourceId)
+GET https://graph.microsoft.com/v1.0/servicePrincipals?$filter=startswith(displayName, 'test')
+
+// then i plugged in the right numbers and ran this  
+POST https://graph.microsoft.com/v1.0/users/bf1a12d5-3643-41a8-a03f-71fbc19ad022/appRoleAssignments
+
+{
+    "principalId": "bf1a12d5-3643-41a8-a03f-71fbc19ad022",
+    "resourceId": "b24471e9-38c2-4c9b-9936-8be25e51a4a9",
+    "appRoleId": "ad848f77-cf03-48ce-bcdd-5310fe9572e1"
+}
+
