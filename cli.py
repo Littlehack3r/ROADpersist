@@ -39,9 +39,10 @@ args = parser.parse_args()
 #    parser.error("--AddUser requires -Password -DisplayName -NickName -PrincipalName.")
 
 if args.command == 'addUser':
-    p = subprocess.Popen(['powershell.exe', './test.ps1 foo'])
-    p = subprocess.Popen(['powershell.exe', './adduser1.ps1 args.Password, args.DisplayName, args.NickName, args.PrincipalName'])
-    print("Run Script with args:", args.Password, args.NickName)
+   # p = subprocess.Popen(['powershell.exe', './test.ps1', args.Password, args.DisplayName, args.NickName, args.PrincipalName])
+    print(args.Password)
+    p = subprocess.Popen(['powershell.exe', './adduser1.ps1', args.Password, args.DisplayName, args.NickName, args.PrincipalName])
+ #   print("Run Script with args:", args.Password, args.NickName)
     
 
 elif args.command == 'test':
