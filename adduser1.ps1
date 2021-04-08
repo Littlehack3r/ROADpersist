@@ -5,7 +5,7 @@ $nn = $args[2]
 $pn = $args[3]
 
 $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-$PasswordProfile.Password = $p
+$PasswordProfile.Password = "$p"
 
 $params = @{
     AccountEnabled = $true
