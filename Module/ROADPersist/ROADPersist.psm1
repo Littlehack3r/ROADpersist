@@ -6,21 +6,21 @@ function test-module{
 
 function adduser{
     param(  
-        [Parameter(Mandatory = $true)][string]$p,
-        [Parameter(Mandatory = $true)][string]$dn,
-        [Parameter(Mandatory = $true)][string]$nn,
-        [Parameter(Mandatory = $true)][string]$pn
+        [Parameter(Mandatory = $true)][string]$passwd,
+        [Parameter(Mandatory = $true)][string]$displayname,
+        [Parameter(Mandatory = $true)][string]$nickname,
+        [Parameter(Mandatory = $true)][string]$email
     )
     Process{
         $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-        $PasswordProfile.Password = "$p"
+        $PasswordProfile.Password = "$passwd"
 
         $params = @{
             AccountEnabled = $true
-            DisplayName = $dn
+            DisplayName = $displayname
             PasswordProfile = $PasswordProfile
-            UserPrincipalName = $pn
-            MailNickName = $nn
+            UserPrincipalName = $email
+            MailNickName = $nickname
         }
 
         New-AzureADUser @params
