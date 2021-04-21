@@ -26,3 +26,21 @@ function adduser{
         New-AzureADUser @params
     }
 }
+
+function newSPcreds {
+		Param( 
+				[Parameter(Mandatory = $true)][String]$spName, 
+				[Parameter(Mandatory = $true)][String]$certName
+		) 
+		Process { 
+				$cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
+                  -Subject "CN=${certName}" `
+                  -KeySpec KeyExchange
+                $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+
+                Get-AzADServicePrincipal -DisplayName $spName | New-AzADSpCredential `
+                  -CertValue $keyValue `
+                  -EndDate $cert.NotAfter `
+                  -StartDate $cert.NotBefore
+		}
+}
