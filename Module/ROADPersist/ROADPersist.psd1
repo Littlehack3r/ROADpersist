@@ -12,7 +12,7 @@
 RootModule = 'ROADPersist.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.6'
+ModuleVersion = '1.7'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -69,7 +69,7 @@ Description = 'Used for interacting with Azure AD'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('test-module','adduser','newSPcreds')
+FunctionsToExport = @('test-module','adduser','newSPcreds','addrole')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = '*'
