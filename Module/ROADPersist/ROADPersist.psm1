@@ -44,3 +44,17 @@ function newSPcreds {
                   -StartDate $cert.NotBefore
 		}
 }
+
+function addrole{
+    param(  
+        [Parameter(Mandatory = $true)][string]$SignInName,
+        [Parameter(Mandatory = $true)][string]$roleDefName,
+        [Parameter(Mandatory = $true)][string]$subId,
+        [Parameter(Mandatory = $true)][string]$resourceGroupName
+    )
+    Process{
+
+        New-AzRoleAssignment -SignInName $SignInName -RoleDefinitionName $roleDefName -Scope "/subscriptions/$subId/resourceGroups/$resourceGroupName"
+
+    }
+}
