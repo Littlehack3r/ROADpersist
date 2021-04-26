@@ -36,5 +36,14 @@ Function Name {
 
 ```
 2. Update psd1
++ ModuleVersion
++ FunctionsToExport
 3. Publish-Module -Name .\ROADPersist -Repository LocalRepo    
 4. update-module roadpersist
+5. find-module roadpersist - checks the version 
+
+You may need to restart your powershell session to see updated scripts. 
+
+# Usability 
+
+See all available commands with `Get-Command -module ROADPersist`
