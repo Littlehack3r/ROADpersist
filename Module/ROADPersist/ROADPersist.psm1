@@ -1,8 +1,3 @@
-function test-module{
-
-    Get-AzureADSubscribedSku
-
-}
 
 function adduser{
     param(  
@@ -24,5 +19,37 @@ function adduser{
         }
 
         New-AzureADUser @params
+    }
+}
+
+function newSPcreds {
+		Param( 
+				[Parameter(Mandatory = $true)][String]$spName, 
+				[Parameter(Mandatory = $true)][String]$certName
+		) 
+		Process { 
+				$cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
+                  -Subject "CN=${certName}" `
+                  -KeySpec KeyExchange
+                $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+
+                Get-AzADServicePrincipal -DisplayName $spName | New-AzADSpCredential `
+                  -CertValue $keyValue `
+                  -EndDate $cert.NotAfter `
+                  -StartDate $cert.NotBefore
+		}
+}
+
+function addrole{
+    param(  
+        [Parameter(Mandatory = $true)][string]$SignInName,
+        [Parameter(Mandatory = $true)][string]$roleDefName,
+        [Parameter(Mandatory = $true)][string]$subId,
+        [Parameter(Mandatory = $true)][string]$resourceGroupName
+    )
+    Process{
+
+        New-AzRoleAssignment -SignInName $SignInName -RoleDefinitionName $roleDefName -Scope "/subscriptions/$subId/resourceGroups/$resourceGroupName"
+
     }
 }
