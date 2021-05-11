@@ -1,5 +1,5 @@
 # ROADpersist
-Offensive Plug-In for ROADTools
+Offensive Plug-In for ROADTools. Created for educational purposes as a capstone project. Do not use this for malicous purposes! If you do we do not take any responsibility - that's on you cheif. 
 
 # ROADpersist Powershell Module 
 
