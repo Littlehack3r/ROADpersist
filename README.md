@@ -13,3 +13,10 @@ Manually Download from: https://www.powershellgallery.com/packages/ROADPersist/
 ## Useage 
 
 ```connect-azuread``` and log into the azure account you *have written permission to penetration test*
+
+Use the existing scripts to help build persistence in your environment. 
+
+Current Actions: 
++ Add User
++ Add Role 
++ Add a new service principle credential 
